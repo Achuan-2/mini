@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width,initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no" />
+  <title>圣诞水晶球</title>
+  <link rel="stylesheet" href="./source/css/style.css">
+  <script src="./source/js/threeCanvas.js"></script>
+  <script src="./source/js/snow3d.js"></script>
+  <script src="./source/js/snow.js"></script>
+  <script>
+  function toggleSound() {
+    var music = document.getElementById("music");//获取ID  
+    console.log(music);
+    console.log(music.paused);
+    if (music.paused) { //判读是否播放  
+      music.paused = false;
+      music.play(); //没有就播放 
+    }
+  }
+  setInterval("toggleSound()", 1000);
+  </script>
+  <style type="text/css">
+    audio {
+    width: 0 !important;
+    }
+    body {
+      background-color: #00aaff;
+      margin: 0px;
+      overflow: hidden;
+    }
+    .poem,
+    .footer {
+      position: fixed;
+      top: 90px;
+      width: 100%;
+      text-align: center;
+      font-size: 35px;
+      color: #ff0000;
+    }
+
+    .footer {
+      border-top: 100px solid #eee;
+      margin: 50px 0px;
+    }
+    .bgg li.sphere {
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(rgba(2, 0, 36, 0.5) 47%, rgba(108, 108, 142, 0.7) 51%, rgba(171, 171, 255, 0.7) 52%, #85647500 53%);
+  }
+  </style>
+
+<body onLoad="init()">
+</head>
+
+<body>
+    <ul class="bgg">
+      <li class="sphere"></li>
+    </ul>
+    <ul class="tree">
+      <li class="top-star"> </li>
+      <li class="top">
+        <ul class="tree-pts">
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+        </ul>
+      </li>
+      <li class="middle first">
+        <ul class="tree-pts">
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+        </ul>
+      </li>
+      <li class="middle second">
+        <ul class="tree-pts">
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+        </ul>
+      </li>
+      <li class="middle third">
+        <ul class="tree-pts">
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+        </ul>
+      </li>
+      <li class="bottom outer">
+        <ul class="tree-pts">
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts left"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+          <li class="pts right"></li>
+        </ul>
+      </li>
+      <li class="stem">
+        <ul class="tree-stem">
+          <li class="stem"></li>
+          <li class="gift g1"></li>
+          <li class="gift g2"></li>
+          <li class="gift g3"></li>
+          <li class="gift g4"></li>
+          <li class="gift g5"></li>
+          <li class="gift g6"></li>
+          <li class="gift g7"></li>
+          <li class="gift g8"></li>
+          <li class="gift g9"></li>
+          <li class="shadow"></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="toys">
+      <li class="star"></li>
+      <li class="ball b1"></li>
+      <li class="ball b2"></li>
+      <li class="ball b3"></li>
+      <li class="ball b4"></li>
+      <li class="ball b5"></li>
+      <li class="ball b6"></li>
+      <li class="ball b7"></li>
+      <li class="ball b8"></li>
+      <li class="ball b9"></li>
+      <li class="ball b10"></li>
+      <li class="ball b11"></li>
+      <li class="ball b12"></li>
+      <li class="ball b13"></li>
+      <li class="ball b14"></li>
+      <li class="ball b15"></li>
+      <li class="ball b16"></li>
+      <li class="ball b17"></li>
+      <li class="ball b18"></li>
+      <li class="ball b19"></li>
+      <li class="ball b20"></li>
+      <li class="light l1"></li>
+      <li class="light l2"></li>
+      <li class="light l3"></li>
+      <li class="light l4"></li>
+      <li class="light l5"></li>
+      <li class="light l6"></li>
+      <li class="light l7"></li>
+      <li class="light l8"></li>
+      <li class="light l9"></li>
+      <li class="light l10"></li>
+      <li class="light l11"></li>
+      <li class="light l12"></li>
+      <li class="light l13"></li>
+      <li class="light l14"></li>
+      <li class="light l15"></li>
+      <li class="light l16"></li>
+      <li class="light l17"></li>
+      <li class="light l18"></li>
+      <li class="light l19"></li>
+      <li class="light l20"></li>
+      <li class="light l21"></li>
+      <li class="light l22"></li>
+      <li class="light l23"></li>
+      <li class="light l24"></li>
+      <li class="light l25"></li>
+    </ul>
+    <div class="poem">
+      <p>🎄🎅🎄</p>
+      <p>Merry Christmas</p>
+    </div>
+    <audio id="music" controls="controls" autoplay="autoplay">
+      <source src="source/music/merry.mp3" type="audio/mp3">
+    </audio>
+
+</body>
+
+</html>

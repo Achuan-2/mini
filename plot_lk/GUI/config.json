@@ -1,0 +1,18 @@
+{
+    "figsize": [
+        6.3,
+        6.3
+    ],
+    "x_label": "t (min)",
+    "y_label": "cm H2O",
+    "panels_height": [
+        1.0,
+        1.0,
+        0.4
+    ],
+    "colors_dict": {
+        "ch1": "#212121",
+        "ch2": "#ea2000",
+        "ch3": "#3449ff"
+    }
+}
