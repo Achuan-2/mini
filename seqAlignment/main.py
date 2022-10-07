@@ -1,7 +1,10 @@
 from src.seqAlignment import NeedlemanWunsch,SmithWaterman
 def  main():
     seq1, seq2 = 'ATAGAATGCGG', 'TCGTAGACGA'
-    penalty_dict = {'MATCH': 1, 'MISMATCH': -1, 'GAP': -2, 'EXTEND_GAP': -1}
+    # seq1, seq2 = 'ATGAC', 'AATGT'
+    # seq1, seq2 = 'GATTACA', 'GCATGCG'
+    # seq1, seq2 = 'GGTTGACTA', 'TGTTACGG'
+    penalty_dict = {'MATCH': 1, 'MISMATCH': -1, 'GAP_OPEN': -2, 'GAP_EXTEND': -2}
     global_align = NeedlemanWunsch(seq1, seq2, penalty_dict)
     global_align.run()
     global_align.print_scoremat()
