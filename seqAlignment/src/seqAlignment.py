@@ -12,8 +12,9 @@ class PairwiseSeqAlignment():
         self.penalty = penalty_dict
         self.paths = []
         self.align_results = []
-        self.score_mat = np.zeros((len(self.seq1) + 1, len(self.seq2) + 1))
-        self.trace_mat = np.zeros((len(self.seq1) + 1, len(self.seq2) + 1))
+        # Initializes the  matrix
+        self.score_mat = np.zeros((len(self.seq1) + 1, len(self.seq2) + 1), dtype=int)
+        self.trace_mat = np.zeros((len(self.seq1) + 1, len(self.seq2) + 1),dtype=object)
 
     def print_align(self):
         # traverse each path
@@ -182,9 +183,6 @@ class NeedlemanWunsch(PairwiseSeqAlignment):
             1: 'D',  # vertical
             2: 'H'  # horizontal
         }
-        # Initializes the alignment
-        self.score_mat = np.zeros((n, m), dtype=int)
-        self.trace_mat = np.zeros((n, m), dtype=object)
         for i in range(n):
             for j in range(m):
                 self.trace_mat[i][j] = ''
@@ -277,9 +275,7 @@ class SmithWaterman(PairwiseSeqAlignment):
         n = len(self.seq1) + 1  # The dimension of the matrix columns.
         m = len(self.seq2) + 1  # The dimension of the matrix rows.
 
-        # Initializes the  matrix
-        self.score_mat = np.zeros((n, m), dtype=int)
-        self.trace_mat = np.zeros((n, m), dtype=object)
+
         for i in range(1, n):
             for j in range(1, m):
                 self.trace_mat[i][j] = ''

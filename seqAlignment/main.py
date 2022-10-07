@@ -4,7 +4,7 @@ def  main():
     # seq1, seq2 = 'ATGAC', 'AATGT'
     # seq1, seq2 = 'GATTACA', 'GCATGCG'
     # seq1, seq2 = 'GGTTGACTA', 'TGTTACGG'
-    penalty_dict = {'MATCH': 1, 'MISMATCH': -1, 'GAP_OPEN': -2, 'GAP_EXTEND': -2}
+    penalty_dict = {'MATCH': 1, 'MISMATCH': -1, 'GAP_OPEN': -2, 'GAP_EXTEND': -1}
     global_align = NeedlemanWunsch(seq1, seq2, penalty_dict)
     global_align.run()
     global_align.print_scoremat()
