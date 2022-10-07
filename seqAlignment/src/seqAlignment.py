@@ -12,6 +12,8 @@ class PairwiseSeqAlignment():
         self.penalty = penalty_dict
         self.paths = []
         self.align_results = []
+        self.score_mat = np.zeros((len(self.seq1) + 1, len(self.seq2) + 1))
+        self.trace_mat = np.zeros((len(self.seq1) + 1, len(self.seq2) + 1))
 
     def print_align(self):
         # traverse each path
@@ -20,7 +22,7 @@ class PairwiseSeqAlignment():
             middle = ''
             align2 = ''
             count = 0
-            score = 0
+            score = self.score_mat[path[0][0]][path[0][1]]
             # invert the path
             for i in range(len(path) - 1, 0, -1):
                 # from horizontal
@@ -28,22 +30,11 @@ class PairwiseSeqAlignment():
                     align1 += '-'
                     middle = middle + ' '
                     align2 += self.seq2[path[i - 1][1] - 1]
-                    if i>2:
-                        if path[i - 1][0]==path[i - 2][0]:
-                            score += self.penalty['GAP_EXTEND']
-                        else:
-                            score += self.penalty['GAP_OPEN']
                 # from vertical
                 elif path[i][1] == path[i - 1][1]:
                     align1 += self.seq1[path[i - 1][0] - 1]
                     middle = middle + ' '
                     align2 += '-'
-                    if i>2:
-                        if path[i - 1][1]==path[i - 2][1]:
-                            score += self.penalty['GAP_EXTEND']
-                        else:
-                            score += self.penalty['GAP_OPEN']
-
                 # from diagonal
                 else:
                     ch1 = self.seq1[path[i - 1][0] - 1]
@@ -53,15 +44,13 @@ class PairwiseSeqAlignment():
                     if ch1 == ch2:
                         middle = middle + '|'
                         count += 1
-                        score += self.penalty['MATCH']
                     else:
                         middle = middle + ' '
-                        score += self.penalty['MISMATCH']
                 
             align_identity = count/(len(path)-1)
             panalty_string = f"""
             =====Parameters=====
-            
+
             Mismatch: {self.penalty["MISMATCH"]}, Match: {self.penalty["MATCH"]}, \n
             Gap Open: {self.penalty["GAP_OPEN"]}, Gap Extend: {self.penalty["GAP_EXTEND"]}
             """
