@@ -5,11 +5,53 @@ https://gitee.com/laorange/DemoPyside6/tree/master
 
 import time
 from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QMainWindow, QApplication
+from PySide6.QtCore import  QRunnable, Slot, Signal, QObject, QThreadPool
 # PySide6-uic demo.ui -o ui_demo.py
 from ui_demo import Ui_MainWindow
 from utils.add import add
-from threading import Thread
-from signal import my_signal
+
+class WorkerSignals(QObject):
+    result = Signal(str)
+    progressBar = Signal(int)
+
+
+class Worker(QRunnable):
+    def __init__(self, a,b,time_cost,windows,*args, **kwargs):
+        super(Worker, self).__init__()
+
+        # Store constructor arguments (re-used for processing)
+        self.a=a
+        self.b=b
+        self.time_cost=time_cost
+        self.windows=windows
+        self.args = args
+        self.kwargs = kwargs
+        self.signals = WorkerSignals()
+
+
+    @Slot()
+    def run(self):
+        '''
+        Initialise the runner function with passed args, kwargs.
+        '''
+
+        # Retrieve args/kwargs here; and fire processing using them
+        try:
+            for index,_ in enumerate(range(self.time_cost)):
+                progress = index*100//self.time_cost
+                # self.ui.progressBar.setValue(progress)
+                self.signals.progressBar.emit(progress)
+                time.sleep(1)
+        except:
+             self.signals.result.emit("Error")
+        else:
+            self.signals.progressBar.emit(100)
+            result = str(add(self.a,self.b))
+            self.signals.result.emit(result)
+            self.windows.ui.inputA.setValue(self.a)
+            self.windows.ui.inputB.setValue(self.b)
+
 
 
 class MainWindow(QMainWindow):
@@ -18,6 +60,9 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()  # UI类的实例化()
         self.ui.setupUi(self)
         self.bind()
+        self.threadpool = QThreadPool()
+        print("Multithreading with maximum %d threads" %
+              self.threadpool.maxThreadCount())
     
     def bind(self):
         # self.ui.___ACTION___.triggered.connect(___FUNCTION___)
@@ -26,31 +71,20 @@ class MainWindow(QMainWindow):
         # self.ui.___SPIN_BOX___.valueChanged.connect(___FUNCTION___)
         # 自定义信号.属性名.connect(___FUNCTION___)
         self.ui.pushButton.clicked.connect(self.handle_click)
-        my_signal.setProgressBar.connect(self.set_progress_bar)
-        my_signal.setResult.connect(self.set_result)
     def set_progress_bar(self, progress:int):
         self.ui.progressBar.setValue(progress)
     def set_result(self, result:str):
         self.ui.result.setText(result)
     def handle_click(self):
-        def inner():
-            a = self.ui.inputA.value()
-            b = self.ui.inputB.value()
-            time_cost = self.ui.timeCost.value()
-            for index,_ in enumerate(range(time_cost)):
-                progress = index*100//time_cost
-                # self.ui.progressBar.setValue(progress)
-                my_signal.setProgressBar.emit(progress)
-                time.sleep(1)
-            # self.ui.progressBar.setValue(100)
-            my_signal.setProgressBar.emit(100)
-            result = str(add(a,b))
-            # self.ui.result.setText(str(result))
-            self.ui.inputA.setValue(a)
-            self.ui.inputB.setValue(b)
-            my_signal.setResult.emit(result)
-        task = Thread(target=inner)
-        task.start()
+        a = self.ui.inputA.value()
+        b = self.ui.inputB.value()
+        time_cost = self.ui.timeCost.value()
+
+        task = Worker(a,b,time_cost,self)
+        task.signals.progressBar.connect(self.set_progress_bar)
+        task.signals.result.connect(self.set_result)
+        self.threadpool.start(task)
+
 
 if __name__ == '__main__':
     app = QApplication([])  # 启动一个应用

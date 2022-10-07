@@ -8,17 +8,24 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QDoubleSpinBox, QHBoxLayout,
-    QLabel, QLayout, QLineEdit, QMainWindow,
-    QMenuBar, QPushButton, QScrollArea, QSizePolicy,
-    QStatusBar, QVBoxLayout, QWidget)
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, QRect)
+
+from PySide6.QtWidgets import (QComboBox, QDoubleSpinBox, QHBoxLayout,
+                               QLabel, QLayout, QLineEdit,
+                               QMenuBar, QPushButton, QScrollArea, QSizePolicy,
+                               QStatusBar, QVBoxLayout, QWidget)
+
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT
+
+
+class myCanvas(FigureCanvas):
+    def __init__(self):
+        self.fig = Figure()
+        FigureCanvas.__init__(self, self.fig)
+        FigureCanvas.setMinimumSize(self, QSize(640, 780))
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -32,7 +39,8 @@ class Ui_MainWindow(object):
         self.input_file_button = QPushButton(self.centralwidget)
         self.input_file_button.setObjectName(u"input_file_button")
         self.input_file_button.setMouseTracking(False)
-        self.input_file_button.setStyleSheet(u"QPushButton {background-color: #A3C1DA}")
+        self.input_file_button.setStyleSheet(
+            u"QPushButton {background-color: #A3C1DA}")
 
         self.verticalLayout_2.addWidget(self.input_file_button)
 
@@ -54,7 +62,6 @@ class Ui_MainWindow(object):
         self.channel_combox.setObjectName(u"channel_combox")
 
         self.horizontalLayout.addWidget(self.channel_combox)
-
 
         self.verticalLayout.addLayout(self.horizontalLayout)
 
@@ -80,7 +87,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2.addWidget(self.time_end)
 
-
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
         self.horizontalLayout_3 = QHBoxLayout()
@@ -104,7 +110,6 @@ class Ui_MainWindow(object):
         self.y_max.setObjectName(u"y_max")
 
         self.horizontalLayout_3.addWidget(self.y_max)
-
 
         self.verticalLayout.addLayout(self.horizontalLayout_3)
 
@@ -132,7 +137,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4.addWidget(self.y_tick_space)
 
-
         self.verticalLayout.addLayout(self.horizontalLayout_4)
 
         self.horizontalLayout_5 = QHBoxLayout()
@@ -148,7 +152,8 @@ class Ui_MainWindow(object):
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_9.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.label_9.sizePolicy().hasHeightForWidth())
         self.label_9.setSizePolicy(sizePolicy)
 
         self.horizontalLayout_5.addWidget(self.label_9)
@@ -158,7 +163,8 @@ class Ui_MainWindow(object):
         sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.fig_width.sizePolicy().hasHeightForWidth())
+        sizePolicy1.setHeightForWidth(
+            self.fig_width.sizePolicy().hasHeightForWidth())
         self.fig_width.setSizePolicy(sizePolicy1)
         self.fig_width.setDecimals(1)
 
@@ -169,14 +175,16 @@ class Ui_MainWindow(object):
         sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
+        sizePolicy2.setHeightForWidth(
+            self.label_11.sizePolicy().hasHeightForWidth())
         self.label_11.setSizePolicy(sizePolicy2)
 
         self.horizontalLayout_5.addWidget(self.label_11)
 
         self.fig_height = QDoubleSpinBox(self.centralwidget)
         self.fig_height.setObjectName(u"fig_height")
-        sizePolicy1.setHeightForWidth(self.fig_height.sizePolicy().hasHeightForWidth())
+        sizePolicy1.setHeightForWidth(
+            self.fig_height.sizePolicy().hasHeightForWidth())
         self.fig_height.setSizePolicy(sizePolicy1)
         self.fig_height.setDecimals(1)
 
@@ -202,9 +210,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_5.addWidget(self.ylabel)
 
-
         self.verticalLayout.addLayout(self.horizontalLayout_5)
-
 
         self.verticalLayout_2.addLayout(self.verticalLayout)
 
@@ -222,7 +228,8 @@ class Ui_MainWindow(object):
         sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
         sizePolicy3.setHorizontalStretch(0)
         sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.label_13.sizePolicy().hasHeightForWidth())
+        sizePolicy3.setHeightForWidth(
+            self.label_13.sizePolicy().hasHeightForWidth())
         self.label_13.setSizePolicy(sizePolicy3)
 
         self.horizontalLayout_6.addWidget(self.label_13)
@@ -239,7 +246,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addWidget(self.label_14)
 
-
         self.horizontalLayout_11.addLayout(self.horizontalLayout_6)
 
         self.color1 = QLabel(self.centralwidget)
@@ -251,7 +257,6 @@ class Ui_MainWindow(object):
         self.color_picker1.setObjectName(u"color_picker1")
 
         self.horizontalLayout_11.addWidget(self.color_picker1)
-
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_11)
 
@@ -281,7 +286,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_9.addWidget(self.label_15)
 
-
         self.horizontalLayout_12.addLayout(self.horizontalLayout_9)
 
         self.color2 = QLabel(self.centralwidget)
@@ -293,7 +297,6 @@ class Ui_MainWindow(object):
         self.color_picker2.setObjectName(u"color_picker2")
 
         self.horizontalLayout_12.addWidget(self.color_picker2)
-
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_12)
 
@@ -323,7 +326,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_10.addWidget(self.label_18)
 
-
         self.horizontalLayout_13.addLayout(self.horizontalLayout_10)
 
         self.color3 = QLabel(self.centralwidget)
@@ -335,7 +337,6 @@ class Ui_MainWindow(object):
         self.color_picker3.setObjectName(u"color_picker3")
 
         self.horizontalLayout_13.addWidget(self.color_picker3)
-
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_13)
 
@@ -351,18 +352,16 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_14.addWidget(self.save_button)
 
-
         self.verticalLayout_2.addLayout(self.horizontalLayout_14)
 
         self.scrollArea = QScrollArea(self.centralwidget)
-        self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setWidgetResizable(True)
-        self.scrollAreaWidgetContents = QWidget()
-        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 614, 304))
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
+        self.view = myCanvas()
+        self.scrollArea.setWidget(self.view)
         self.verticalLayout_2.addWidget(self.scrollArea)
+        self.toolbar = NavigationToolbar2QT(self.view, self.scrollArea)
+        self.verticalLayout_2.addWidget(self.toolbar)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
@@ -379,39 +378,72 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.input_file_button.setText(QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u6587\u4ef6", None))
-        self.input_file.setText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u540d", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Show Channels :", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Time Start :", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Time End :", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Ymin :", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Ymax :", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"X Tick Space :", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Y Tick Space :", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"Figure Size:", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u" W=", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"H=", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"xlabel", None))
-        self.xlabel.setText(QCoreApplication.translate("MainWindow", u"t (min)", None))
-        self.label_21.setText(QCoreApplication.translate("MainWindow", u"ylabel", None))
-        self.ylabel.setText(QCoreApplication.translate("MainWindow", u"Voltage (mV)", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Chanel1 :", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"height=", None))
-        self.label_14.setText(QCoreApplication.translate("MainWindow", u"color=", None))
-        self.color1.setText(QCoreApplication.translate("MainWindow", u"#046cb0", None))
-        self.color_picker1.setText(QCoreApplication.translate("MainWindow", u"color picker", None))
-        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Chanel2 :", None))
-        self.label_17.setText(QCoreApplication.translate("MainWindow", u"height=", None))
-        self.label_15.setText(QCoreApplication.translate("MainWindow", u"color=", None))
-        self.color2.setText(QCoreApplication.translate("MainWindow", u"#f72400", None))
-        self.color_picker2.setText(QCoreApplication.translate("MainWindow", u"color picker", None))
-        self.label_19.setText(QCoreApplication.translate("MainWindow", u"Chanel3 :", None))
-        self.label_20.setText(QCoreApplication.translate("MainWindow", u"height=", None))
-        self.label_18.setText(QCoreApplication.translate("MainWindow", u"color=", None))
-        self.color3.setText(QCoreApplication.translate("MainWindow", u"#000000", None))
-        self.color_picker3.setText(QCoreApplication.translate("MainWindow", u"color picker", None))
-        self.plot_button.setText(QCoreApplication.translate("MainWindow", u"Plot", None))
-        self.save_button.setText(QCoreApplication.translate("MainWindow", u"Save", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate(
+            "MainWindow", u"MainWindow", None))
+        self.input_file_button.setText(
+            QCoreApplication.translate("MainWindow", u"Choose File", None))
+        self.input_file.setText(QCoreApplication.translate(
+            "MainWindow", u"Filename:", None))
+        self.label.setText(QCoreApplication.translate(
+            "MainWindow", u"Show Channels :", None))
+        self.label_2.setText(QCoreApplication.translate(
+            "MainWindow", u"Time Start :", None))
+        self.label_3.setText(QCoreApplication.translate(
+            "MainWindow", u"Time End :", None))
+        self.label_4.setText(QCoreApplication.translate(
+            "MainWindow", u"Ymin :", None))
+        self.label_5.setText(QCoreApplication.translate(
+            "MainWindow", u"Ymax :", None))
+        self.label_6.setText(QCoreApplication.translate(
+            "MainWindow", u"X Tick Space :", None))
+        self.label_7.setText(QCoreApplication.translate(
+            "MainWindow", u"Y Tick Space :", None))
+        self.label_8.setText(QCoreApplication.translate(
+            "MainWindow", u"Figure Size:", None))
+        self.label_9.setText(QCoreApplication.translate(
+            "MainWindow", u" W=", None))
+        self.label_11.setText(
+            QCoreApplication.translate("MainWindow", u"H=", None))
+        self.label_10.setText(QCoreApplication.translate(
+            "MainWindow", u"xlabel", None))
+        self.xlabel.setText(QCoreApplication.translate(
+            "MainWindow", u"t (min)", None))
+        self.label_21.setText(QCoreApplication.translate(
+            "MainWindow", u"ylabel", None))
+        self.ylabel.setText(QCoreApplication.translate(
+            "MainWindow", u"cm H2O", None))
+        self.label_12.setText(QCoreApplication.translate(
+            "MainWindow", u"Chanel1 :", None))
+        self.label_13.setText(QCoreApplication.translate(
+            "MainWindow", u"height=", None))
+        self.label_14.setText(QCoreApplication.translate(
+            "MainWindow", u"color=", None))
+        self.color1.setText(QCoreApplication.translate(
+            "MainWindow", u"#046cb0", None))
+        self.color_picker1.setText(QCoreApplication.translate(
+            "MainWindow", u"color picker", None))
+        self.label_16.setText(QCoreApplication.translate(
+            "MainWindow", u"Chanel2 :", None))
+        self.label_17.setText(QCoreApplication.translate(
+            "MainWindow", u"height=", None))
+        self.label_15.setText(QCoreApplication.translate(
+            "MainWindow", u"color=", None))
+        self.color2.setText(QCoreApplication.translate(
+            "MainWindow", u"#f72400", None))
+        self.color_picker2.setText(QCoreApplication.translate(
+            "MainWindow", u"color picker", None))
+        self.label_19.setText(QCoreApplication.translate(
+            "MainWindow", u"Chanel3 :", None))
+        self.label_20.setText(QCoreApplication.translate(
+            "MainWindow", u"height=", None))
+        self.label_18.setText(QCoreApplication.translate(
+            "MainWindow", u"color=", None))
+        self.color3.setText(QCoreApplication.translate(
+            "MainWindow", u"#000000", None))
+        self.color_picker3.setText(QCoreApplication.translate(
+            "MainWindow", u"color picker", None))
+        self.plot_button.setText(
+            QCoreApplication.translate("MainWindow", u"Plot", None))
+        self.save_button.setText(
+            QCoreApplication.translate("MainWindow", u"Save", None))
     # retranslateUi
-
