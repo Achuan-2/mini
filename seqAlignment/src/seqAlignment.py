@@ -153,7 +153,6 @@ class NeedlemanWunsch(PairwiseSeqAlignment):
         Needleman_Wunsch
         cacalute direction by compare with vertical, horizontal, diagonal
         traceback from last cell, end at first cell
-        return score matrix and trace matrix
         """
         n,m=self.global_score()
         path = []
@@ -241,7 +240,6 @@ class SmithWaterman(PairwiseSeqAlignment):
         Smith_Waterman
         cacalute direction by compare with 0(None) , vertical, horizontal, diagonal
         traceback from max score, end at 0 (all cells >0)
-        return score matrix and trace matrix
         """
 
         self.local_score()
