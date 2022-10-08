@@ -7,6 +7,8 @@
 | 初始化   | 行列全部置0                 | 第0行和第0列置GAP罚分 |
 | 得分方式 | 负分置0                     | 允许负分              |
 | 回溯方式 | 最高分开始->位点分数为0结束 | 右下角->左上角        |
+
+
 ![20221008233206](https://cdn.jsdelivr.net/gh/Achuan-2/PicBed@pic/assets/README/20221008233206.png)
 ![20221008233134](https://cdn.jsdelivr.net/gh/Achuan-2/PicBed@pic/assets/README/20221008233134.png)
 ## Install 
