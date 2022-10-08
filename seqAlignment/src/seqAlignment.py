@@ -6,17 +6,21 @@ import matplotlib.ticker as ticker
 
 class PairwiseSeqAlignment():
     # A dictionary for all the penalty values.
-    def __init__(self, seq1, seq2, penalty_dict) -> None:
+    def __init__(self, seq1, seq2, match, mismatch, gap_open, gap_extension) -> None:
         self.seq1 = seq1.upper()
         self.seq2 = seq2.upper()
-        self.penalty = penalty_dict
+        self.penalty  = {'MATCH': match, 'MISMATCH': mismatch,
+                    'GAP_OPEN': gap_open, 'GAP_EXTEND': gap_extension}
         self.paths = []
-        self.align_results = []
         # Initializes the  matrix
-        self.score_mat = np.zeros((len(self.seq1) + 1, len(self.seq2) + 1), dtype=int)
-        self.trace_mat = np.zeros((len(self.seq1) + 1, len(self.seq2) + 1),dtype=object)
-
-    def print_align(self):
+        self.score_mat = np.zeros((len(self.seq1) + 1, len(self.seq2) + 1), dtype=float)
+        self.trace_mat = np.zeros((len(self.seq1) + 1, len(self.seq2) + 1), dtype=object)
+    @property
+    def parameters(self):
+        return f'\n{"Parameters".center(40,"=")}\n\nMATCH: {self.penalty["MATCH"]}\nMISMATCH: {self.penalty["MISMATCH"]}\nGAP_OPEN: {self.penalty["GAP_OPEN"]}\nGAP_EXTEND: {self.penalty["GAP_EXTEND"]}\n'
+    @property
+    def align_results(self):
+        results = []
         # traverse each path
         for k, path in enumerate(self.paths):
             align1 = ''
@@ -49,50 +53,40 @@ class PairwiseSeqAlignment():
                         middle = middle + ' '
                 
             align_identity = count/(len(path)-1)
-            panalty_string = f"""
-            =====Parameters=====
-
-            Mismatch: {self.penalty["MISMATCH"]}, Match: {self.penalty["MATCH"]}, \n
-            Gap Open: {self.penalty["GAP_OPEN"]}, Gap Extend: {self.penalty["GAP_EXTEND"]}
-            """
-            self.align_results.append(panalty_string)
-            align_result = f"""
-            =====Alignment {k+1}=====
             
-                {align1}
-                {middle}
-                {align2}
-
-            Identity={align_identity:.2%}({count}/{len(path)-1})
-            score={score}
-            """
-            print(align_result)
-            self.align_results.append(align_result)
-
-    def diagonal_score(self, a, b):
-        if a != b:   # mismatch
+            align_result=f'\n{f"Alignment {k+1}".center(40,"=")}\n\n'+f'{align1}\n{middle}\n{align2}\n\nIdentity={align_identity:.2%}({count}/{len(path)-1})\nScore={score}\n'
+            results.append(align_result)
+        return results
+    def diagonal_score(self, base1, base2):
+        if base1 != base2:
             return self.penalty['MISMATCH']
-        elif a == b:  # match
+        else:
             return self.penalty['MATCH']
 
-    def print_matrix(self, m):
+    def output_matrix(self, m):
         """print score matrix or trace matrix"""
         seq1 = '-' + self.seq1
         seq2 = '-' + self.seq2
-        print()
-        print(' '.join([f'{i:>4}' for i in ' '+seq2]))
+        output = '\n'+' '.join([f'{i:>4}' for i in ' '+seq2])
         for i, p in enumerate(seq1):
             line = [p] + [m[i][j] for j in range(len(seq2))]
-            print(' '.join([f'{i:>4}' for i in line]))
-        print()
-        return
-
-    def print_scoremat(self):
-        self.print_matrix(self.score_mat)
-
-    def print_tracemat(self):
-        self.print_matrix(self.trace_mat)
-
+            output += '\n'+' '.join([f'{i:>4}' for i in line])
+        output += '\n'
+        return output
+    @property
+    def scoremat(self):
+        return f'\n{"Score Matrix".center(40,"=")}\n'+self.output_matrix(self.score_mat)
+    
+    @property
+    def tracemat(self):
+        return f'\n{"Trace Matrix".center(40,"=")}\n'+self.output_matrix(self.trace_mat)
+    
+    def save_align(self, filename):
+        with open(filename, 'w') as f:
+            f.write(self.parameters)
+            f.write(self.scoremat)
+            f.write(self.tracemat)
+            f.write('\n'.join(self.align_results))
     def plot(self):
         n = len(self.seq1)
         m = len(self.seq2)
@@ -113,7 +107,7 @@ class PairwiseSeqAlignment():
         ax[1].set_ylim(-0.5, self.score_mat.shape[0] - .5)
         for i in range(self.score_mat.shape[0]):
             for j in range(self.score_mat.shape[1]):
-                ax[0].text(j, i, self.score_mat[i, j],
+                ax[0].text(j, i, np.round(self.score_mat[i, j],2),
                            ha="center", va="center")
         for i, l in enumerate(self.seq2):
             ax[0].text(i + 1, -0.7, l, ha="center",
@@ -152,12 +146,12 @@ class PairwiseSeqAlignment():
             for i in range(len(path_list)-1):
                 ax[0].annotate("", xy=path_list[i+1][::-1],
                                xytext=path_list[i][::-1], arrowprops=arrowprops)
-
-        ax[1].text(0, 0,  "\n".join(self.align_results),
+        results=self.parameters+"\n".join(self.align_results)
+        ax[1].text(0, 0, results,
                    family='monospace', fontweight="semibold")
         fig.tight_layout()
 
-        plt.show()
+        # plt.show()
         return fig
 
 
@@ -258,13 +252,11 @@ class SmithWaterman(PairwiseSeqAlignment):
     def run(self):
         self.local_score()
         find_max = np.where(self.score_mat == np.max(self.score_mat))
-        print(find_max)
         row = find_max[0]
         col = find_max[1]
         path = []
         for i in range(len(row)):
             self.local_traceback(row[i], col[i], path)
-        print(self.paths)
     def local_score(self):
         trace_dict = {
             0: 'V',  # vertical
