@@ -1,15 +1,14 @@
-from pkg_resources import require
 from src.seqAlignment import NeedlemanWunsch, SmithWaterman
 import click
 
 
 @click.command()
-@click.option('--seq1', '-1', default='ATAGAATGCGG', prompt='Enter the first sequence', help='The first sequence.')
-@click.option('--seq2', '-2', default='TCGTAGACGA',prompt='Enter the second sequence', help='The second sequence.')
-@click.option('--match', '-m', default=1, help='The match score.')
-@click.option('--mismatch', '-d', default=-1, help='The mismatch score.')
-@click.option('--gap','-g', default=-2, help='The gap score.')
-@click.option('--extension', '-e', default=-1, help='The extension score.')
+@click.option('--seq1', '-1', default='ATAGAATGCGG', prompt='Enter the first sequence', help='The first sequence.',type=str)
+@click.option('--seq2', '-2', default='TCGTAGACGA',prompt='Enter the second sequence', help='The second sequence.',type=str)
+@click.option('--match', '-m', default=1.0, help='The match score.',type=float)
+@click.option('--mismatch', '-d', default=-1.0, help='The mismatch penalty.',type=float)
+@click.option('--gap','-g', default=-2.0, help='The gap open penalty.',type=float)
+@click.option('--extension', '-e', default=-1.0, help='The gap extension penalty.',type=float)
 
 def main(seq1, seq2, match, mismatch, gap, extension):
     para_dict = {
