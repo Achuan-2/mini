@@ -1,14 +1,14 @@
 from setuptools import setup
 
 setup(
-    name='seqAlignment',
+    name='PairwiseSeqAlignment',
     version='0.1',
-    py_modules=['seqAlignment'],
+    py_modules=['PairwiseSeqAlignment'],
     install_requires=[
         'Click',
     ],
     entry_points='''
         [console_scripts]
-        seqAlignment=main:main
+        PairwiseSeqAlignment=main:main
     ''',
 )
