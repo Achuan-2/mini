@@ -1,8 +1,8 @@
 ## 2022.10.09
 - 添加了mkdir函数功能，以及--ouput参数
-- 可以选择全局比对或局部比对
-- 运行完成终端打印align结果
-
+- 运行完成终端会打印align结果
+- 完善Commandline模块，支持选择全局比对或局部比对
+- 上传到Pypi https://pypi.org/project/pairwiseAlignment/
 ## 2022.10.08
 - 修复了调用plot_align时，参数重复出现的情况
 - 学习了python面向对象的@property魔术方法，就给对象的parameters、align_results、scoremat、tracemat加了
