@@ -67,10 +67,10 @@ class PairwiseSeqAlignment():
         """print score matrix or trace matrix"""
         seq1 = '-' + self.seq1
         seq2 = '-' + self.seq2
-        output = '\n'+' '.join([f'{i:>4}' for i in ' '+seq2])
+        output = '\n'+' '.join([f'{i:>6}' for i in ' '+seq2])
         for i, p in enumerate(seq1):
             line = [p] + [m[i][j] for j in range(len(seq2))]
-            output += '\n'+' '.join([f'{i:>4}' for i in line])
+            output += '\n'+' '.join([f'{i:>6}' for i in line])
         output += '\n'
         return output
     @property

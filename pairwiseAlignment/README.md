@@ -12,7 +12,7 @@
 $ pip install pairwiseAlignment
 ```
 ## Help
-```shell
+```
 Usage: pairwiseAlignment [OPTIONS]  
 
   Using Python to implement Needleman Wunsch and Smith Waterman algorithms
@@ -26,8 +26,8 @@ Options:
   -g, --gap FLOAT        The gap open penalty.  [default: -2.0]
   -e, --extension FLOAT  The gap extension penalty.  [default: -1.0]
   -o, --output TEXT      The output directory.  [default: output]
-  -G, --global           Choose Global alignment.[default]
-  -L, --local            Choose Local alignment.
+  -G, --global           Choose global alignment.[default]
+  -L, --local            Choose local alignment.
   -n, --nosave           Do not save the alignment result.
   --help                 Show this message and exit
 ```

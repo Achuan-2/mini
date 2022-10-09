@@ -12,8 +12,8 @@ from .src.SeqAlignment import NeedlemanWunsch, SmithWaterman
 @click.option('--gap','-g', default=-2.0,  show_default=True,help='The gap open penalty.',type=float)
 @click.option('--extension', '-e', default=-1.0,  show_default=True,help='The gap extension penalty.',type=float)
 @click.option('--output', '-o', default='output',  show_default=True,help='The output directory.',type=str)
-@click.option('--global', '-G','method', flag_value='global', default='global',help='Choose Global alignment.[default]')
-@click.option('--local', '-L','method', flag_value='local', help='Choose Local alignment.')
+@click.option('--global', '-G','method', flag_value='global', default='global',help='Choose global alignment.[default]')
+@click.option('--local', '-L','method', flag_value='local', help='Choose local alignment.')
 @click.option('--nosave', '-n', is_flag=True, help='Do not save the alignment result.')
 def main(seq1, seq2, match, mismatch, gap, extension,output,method,nosave):
     """
