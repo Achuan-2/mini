@@ -1,6 +1,6 @@
 
 
-## 使用Python实现双序列比对算法中的Needleman-Wunsch和Smith-Waterman算法
+## Using Python to implement Needleman Wunsch and Smith Waterman algorithms
 
 ## Introduction
 
@@ -9,7 +9,7 @@
 
 ## Install 
 ```shell
-$ pip install --editable .
+$ pip install PairwiseSeqAlignment
 ```
 ## Help
 ```shell
@@ -26,6 +26,8 @@ Options:
   -g, --gap FLOAT        The gap open penalty.
   -e, --extension FLOAT  The gap extension penalty.
   -o, --output TEXT      The output directory.
+  -G, --global           Choose Global alignment.[Default]
+  -L, --local            Choose Local alignment.
   --help                 Show this message and exit.
 ```
 

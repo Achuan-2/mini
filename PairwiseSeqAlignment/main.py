@@ -11,7 +11,10 @@ from src.PairwiseSeqAlignment import NeedlemanWunsch, SmithWaterman
 @click.option('--gap','-g', default=-2.0, help='The gap open penalty.',type=float)
 @click.option('--extension', '-e', default=-1.0, help='The gap extension penalty.',type=float)
 @click.option('--output', '-o', default='output', help='The output directory.',type=str)
-def main(seq1, seq2, match, mismatch, gap, extension,output):
+@click.option('--global', '-G','method', flag_value='global', default='global',help='Choose Global alignment.[Default]')
+@click.option('--local', '-L','method', flag_value='local', help='Choose Local alignment.')
+
+def main(seq1, seq2, match, mismatch, gap, extension,output,method):
     """
     Using Python to implement Needleman Wunsch and Smith Waterman algorithms for pairwise sequence alignment
     """
@@ -23,19 +26,19 @@ def main(seq1, seq2, match, mismatch, gap, extension,output):
         'mismatch': mismatch,
         'gap_open': gap,
         'gap_extension': extension}
-    global_align = NeedlemanWunsch(**para_dict)
-    global_align.run()
-    global_align.save_align(f'{output}/nw.txt')
-    fig1 = global_align.plot()
-    fig1.savefig(f'{output}/nw.png', dpi=120)
-
-    local_align = SmithWaterman(**para_dict)
-    local_align.run()
-    local_align.save_align(f'{output}/sw.txt')
-    fig2 = local_align.plot()
-    fig2.savefig(f'{output}/sw.png', dpi=120)
-    click.secho("-------------------------------> Done!", fg='red')
+    if method=='global':
+        align = NeedlemanWunsch(**para_dict)
+    else:
+        align = SmithWaterman(**para_dict)
+    align.run()
+    click.secho(f"\nChoose method : {method.capitalize()} Alignment", fg='green')
+    for i in align.align_results:
+        click.secho(i)
+    align.save_align(f'{output}/{method}.txt')
+    fig1 = align.plot()
+    fig1.savefig(f'{output}/{method}.png', dpi=120)
     click.secho(f"Results saved in folder: {output}.", fg='blue')
+
 
 
 if __name__ == "__main__":
