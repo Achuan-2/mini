@@ -17,6 +17,7 @@ Usage: PairwiseSeqAlignment [OPTIONS]
 
   Using Python to implement Needleman Wunsch and Smith Waterman algorithms
   for pairwise sequence alignment
+
 Options:
   -1, --seq1 TEXT        The first sequence.
   -2, --seq2 TEXT        The second sequence.
