@@ -22,6 +22,7 @@ Options:
   -d, --mismatch FLOAT   The mismatch penalty.
   -g, --gap FLOAT        The gap open penalty.
   -e, --extension FLOAT  The gap extension penalty.
+  -o, --output TEXT      The output directory.
   --help                 Show this message and exit.
 ```
 
