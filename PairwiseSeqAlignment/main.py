@@ -12,6 +12,9 @@ from src.PairwiseSeqAlignment import NeedlemanWunsch, SmithWaterman
 @click.option('--extension', '-e', default=-1.0, help='The gap extension penalty.',type=float)
 @click.option('--output', '-o', default='output', help='The output directory.',type=str)
 def main(seq1, seq2, match, mismatch, gap, extension,output):
+    """
+    Using Python to implement Needleman Wunsch and Smith Waterman algorithms for pairwise sequence alignment
+    """
     mkdir(output)
     para_dict = {
         'seq1':seq1,
