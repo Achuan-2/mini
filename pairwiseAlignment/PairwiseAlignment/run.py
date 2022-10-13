@@ -36,6 +36,7 @@ def main(seq1, seq2, match, mismatch, gap, extension, output, method, nosave):
     align.run()
     click.secho(
         f"\nChoose method : {method.capitalize()} Alignment", fg='green')
+    click.secho(align.parameters)
     for i in align.align_results:
         click.secho(i)
     if not nosave:
