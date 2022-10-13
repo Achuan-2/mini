@@ -1,3 +1,8 @@
+## 2022.10.13
+- :art: reorganization the project
+- :bug: 修正全局比对第一个cell是0的情况
+
+
 ## 2022.10.09
 - 添加了mkdir函数功能，以及--ouput参数
 - 运行完成终端会打印align结果
