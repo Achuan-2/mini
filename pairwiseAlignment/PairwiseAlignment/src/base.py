@@ -20,6 +20,9 @@ class PairwiseSeqAlignment():
         return f'\n{"Parameters".center(40,"=")}\n\nMATCH: {self.penalty["MATCH"]}\nMISMATCH: {self.penalty["MISMATCH"]}\nGAP_OPEN: {self.penalty["GAP_OPEN"]}\nGAP_EXTEND: {self.penalty["GAP_EXTEND"]}\n'
     @property
     def align_results(self):
+        """
+        return alignment results
+        """
         results = []
         # traverse each path
         for k, path in enumerate(self.paths):
@@ -57,14 +60,16 @@ class PairwiseSeqAlignment():
             align_result=f'\n{f"Alignment {k+1}".center(40,"=")}\n\n'+f'{align1}\n{middle}\n{align2}\n\nIdentity={align_identity:.2%}({count}/{len(path)-1})\nScore={score}\n'
             results.append(align_result)
         return results
-    def diagonal_score(self, base1, base2):
+    def isIdentical(self, base1, base2):
         if base1 != base2:
             return self.penalty['MISMATCH']
         else:
             return self.penalty['MATCH']
 
     def output_matrix(self, m):
-        """print score matrix or trace matrix"""
+        """
+        print score matrix or trace matrix function
+        """
         seq1 = '-' + self.seq1
         seq2 = '-' + self.seq2
         output = '\n'+' '.join([f'{i:>6}' for i in ' '+seq2])
@@ -75,19 +80,35 @@ class PairwiseSeqAlignment():
         return output
     @property
     def scoremat(self):
+        """
+        return score matrix
+        """
         return f'\n{"Score Matrix".center(40,"=")}\n'+self.output_matrix(self.score_mat)
     
     @property
     def tracemat(self):
+        """
+        return trace matrix
+        """
         return f'\n{"Trace Matrix".center(40,"=")}\n'+self.output_matrix(self.trace_mat)
     
     def save_align(self, filename):
+        """
+        save alignment results to a file
+        """
         with open(filename, 'w') as f:
             f.write(self.parameters)
             f.write(self.scoremat)
             f.write(self.tracemat)
             f.write('\n'.join(self.align_results))
+    
     def plot(self):
+        """
+        visualize the score_matrix and trace_matrix in combination
+        Note: 
+        - adapted from kevinah95/plot_needleman_wunsch.py
+        - links: https://gist.github.com/kevinah95/f6f9d16ebd17a3a28208471f4e4bb878
+        """
         n = len(self.seq1)
         m = len(self.seq2)
         plt.rcParams["figure.figsize"] = m, n
@@ -151,7 +172,6 @@ class PairwiseSeqAlignment():
                    family='monospace', fontweight="semibold")
         fig.tight_layout()
 
-        # plt.show()
         return fig
 
 

@@ -41,7 +41,7 @@ class NeedlemanWunsch(PairwiseSeqAlignment):
             for j in range(1, m):
                 # The value for match/mismatch -  diagonal.
                 di = self.score_mat[i-1][j-1] + \
-                    self.diagonal_score(self.seq1[i-1], self.seq2[j-1])
+                    self.isIdentical(self.seq1[i-1], self.seq2[j-1])
                 # vertical value(from the upper cell)
                 ve = self.score_mat[i-1][j] + self.penalty['GAP_EXTEND'] \
                     if 'V' in str(self.trace_mat[i - 1][j])  else self.score_mat[i-1][j] + self.penalty['GAP_OPEN']
