@@ -1,0 +1,97 @@
+---
+title: "My Document"
+author:
+  - 苏济雄
+toc: true
+number-sections: true
+crossref:
+  chapters: true
+  fig-title: 图    # (default is "Figure")
+  tbl-title: 表     # (default is "Table")
+  title-delim: ' '     # (default is ":")
+  fig-prefix: 图   # (default is "Figure")
+  tbl-prefix: 表    # (default is "Table")
+format:
+  pdf:
+    # toc
+    toc-depth: 2
+    toc-title: Contents
+    # code
+    code-block-bg: '#f1f3f5'
+    highlight-style: github
+    # cite
+    cite-method: biblatex # biblatex,citeproc
+    bibliography: references.bib
+    biblio-title: References
+    # output
+    documentclass: article # scrartcl，article, report or book
+    papersize: a4 # a4, letter
+    colorlinks: true
+    #classoption: [twocolumn,landscape] # twocolumn, landscape
+    keep-tex: true
+    tbl-colwidths: false
+    tbl-cap-location: top
+    geometry:
+      - top=30mm
+      - left=20mm
+      - heightrounded
+    include-in-header:
+      text: |
+        \usepackage{ctex}    % CJK 包
+        \usepackage[backend=biber,style=gb7714-2015,gbnamefmt=lowercase]{biblatex}
+        \setCJKmainfont[BoldFont={方正大标宋简体}]{方正宋三简体}
+        \setmainfont{Times New Roman} %英文字體調整
+  html:
+    code-fold: true
+    code-tools: true
+---
+
+# Crossrefs
+
+hello \cite{sevastre2022intracellular}
+hhh \cite{kucera2020prostate}
+测试中文 \cite{董文鸳2011我国谷歌学术搜索研究综述}
+
+
+# 奥卡姆剃刀原理
+
+奥卡姆剃刀原理（Occam's Razor, Ockham's Razor）又称“奥康的剃刀”，它是由 14 世纪英格兰的逻辑学家、圣方济各会修士奥卡姆的威廉（William of Occam，约 1285 年至 1349 年）提出。这个原理称为“**如无必要，勿增实体**”，即“简单有效原理”。正如他在《箴言书注》2 卷 15 题说“切勿浪费较多东西去做，用较少的东西，同样可以做好的事情。”
+
+# 如何摆脱社交自卑
+
+“很多人会好奇，为什么有的人能够在社交中这么自信地释放自己的魅力呢？
+“——直到你认真地观察一朵花，它绽放的时候是完全展开的；它的花瓣、花蕊不管多么的脆弱——甚至是慌乱的，它都会把自己完全暴露在世人的面前。
+“这就是它最美好的样子。
+
+# 测试表格
+
+| header 1 | header 2 |
+| :----------: | :----------: |
+| cell 1   | cell 2   |
+| cell 3   | cell 4   |
+| cell 5   | cell 6   |
+
+: Demonstration of pipe table syntax {#tbl-1}
+
+见 @tbl-1 
+
+| header 1 | header 2 |
+| :----------: | :----------: |
+| cell 1   | cell 2   |
+| cell 3   | cell 4   |
+| cell 5   | cell 6   |
+
+: Demonstration of pipe table syntax {#tbl-2}
+
+见 @tbl-2
+
+
+# English
+
+When creating PDFs, you can choose to use either the default Pandoc citation handling based on citeproc, or alternatively use natbib or BibLaTeX. This can be controlled using the cite-method option. For example:
+The default is to use citeproc (Pandoc’s built in citation processor).
+
+See the main article on using Citations with Quarto for additional details on citation syntax, available bibliography formats, etc.
+
+::: {#refs}
+:::

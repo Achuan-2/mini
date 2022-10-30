@@ -1,0 +1,17 @@
+---
+title: "My Project"
+format: 
+    gfm:
+        html-math-method: webtex # webtex, mathjax, katex
+jupyter: python3
+---
+
+## Code
+    
+```{python}
+1 + 1
+```
+
+## Math
+
+$x + 1$

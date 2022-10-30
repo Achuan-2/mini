@@ -1,0 +1,1076 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  a4paper,
+]{article}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmonofont[]{Consolas}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[top=30mm,left=20mm,heightrounded]{geometry}
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+\lstset{defaultdialect=[5.3]Lua}
+\lstset{defaultdialect=[x86masm]Assembler}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{ctex}
+\usepackage[backend=biber,style=gb7714-2015,gbnamefmt=lowercase]{biblatex}
+\usepackage[dvipsnames]{xcolor}
+\setCJKmainfont[BoldFont={方正大标宋简体}]{方正宋三简体}
+\setmainfont{Times New Roman} %英文字體調整
+\lstset{basicstyle=\ttfamily,breaklines=true,keywordstyle=\bfseries\color{NavyBlue},morekeywords={}, commentstyle=\itshape\color{black!50!white}, stringstyle=\bfseries\color{PineGreen!90!black},columns=flexible,frame=single,framesep=1em}
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{图}
+\else
+  \newcommand\figurename{图}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{表}
+\else
+  \newcommand\tablename{表}
+\fi
+}
+\newcommand*\listoflistings\lstlistoflistings
+\AtBeginDocument{%
+\renewcommand*\lstlistlistingname{List of Listings}
+}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{biblatex}
+\addbibresource{references.bib}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={My Document},
+  pdfauthor={苏济雄},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{My Document}
+\author{苏济雄}
+\date{}
+
+\begin{document}
+\maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, breakable, boxrule=0pt, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, sharp corners]}{\end{tcolorbox}}\fi
+
+\renewcommand*\contentsname{Contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+苏济雄 22211520038
+
+‍
+
+\hypertarget{ux4e00ux6570ux636eux6765ux6e90}{%
+\section{一、数据来源}\label{ux4e00ux6570ux636eux6765ux6e90}}
+
+\hypertarget{ux6570ux636eux7b80ux4ecb}{%
+\subsection{数据简介}\label{ux6570ux636eux7b80ux4ecb}}
+
+本次分析的数据来源于在 2020 年五月发表在 Nucleic Acids Res 的《Nono
+deficiency compromises TET1 chromatin association and impedes neuronal
+differentiation of mouse embryonic stem cells》（doi:
+\href{https://doi.org/10.1093/nar/gkaa213}{10.1093/nar/gkaa213}）。该文由复旦大学生物医学研究所表观遗传学实验室，哈佛大学医学院附属布莱根妇女医院内分泌系、哈佛大学医学院附属波士顿儿童医院新生医学与表观遗传学研究室共同发表，第一作者为
+Wenjing Li 和 Violetta
+Karwacki-Neisius，石雨江教授和吴飞珍副研究员为共同通讯作者。该文涉及的代码见
+\href{https://github.com/FeizhenWu/Nono}{FeizhenWu/Nono}。
+
+NONO 是一种 DNA/RNA 结合蛋白，该文揭示了
+\textbf{NONO在小鼠胚胎干细胞(mESCs)的神经元分化过程中起着关键作用，Nono缺失会影响到TET1与染色质结合并阻碍小鼠胚胎干细胞的神经分化}：Nono
+基因缺失将使得神经元分化的关键特定基因上调失败，从而阻碍了神经元谱系的定型；许多
+NONO 调控的基因也是 DNA 去甲基化酶 TET1 的靶向基因；将野生型 NONO
+蛋白重新引入 NONO KO 细胞，不仅使得大部分 NONO/TET1
+共调控基因的恢复正常表达，还可以挽救 NONO 缺陷的 mESCs
+的神经分化缺陷；作者还发现 NONO 能通过其 DNA 结合域直接与 TET1
+相互作用，并将 TET1 招募到基因位点以调节 5-羟甲基胞嘧啶水平。NONO
+的缺失会导致 TET1 与染色质显著分离，使得神经元基因的 DNA 羟甲基化失调。
+
+该文涉及的 RNA-seq 测序数据在 NCBI SRA 数据库编号为
+\href{https://www.ncbi.nlm.nih.gov/bioproject/PRJNA527295}{PRJNA527295}。测序的细胞为小鼠胚胎干细胞（E14TG2a），分别对三类
+mESCs 细胞进行测序（WT，Nono KO，Nono KO+WT），使用 Illumina HiSeq 2500
+测序仪进行转录组 RNA 测序。
+
+本次实验选取了四个 Run（测序数据），分别为
+SRR8734708（set1\_WT\_D0）、SRR8734712（set1\_NonoKO\_D0）、SRR8734718（Set2\_WT\_D0）和
+SRR8734722（Set2\_NonoKO\_D0）。
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule()
+RUN & GROUP \\
+\midrule()
+\endhead
+SRR8734708 & set1\_WT\_D0 \\
+SRR8734712 & set1\_NonoKO\_D0 \\
+SRR8734718 & Set2\_WT\_D0 \\
+SRR8734722 & Set2\_NonoKO\_D0 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{ux6570ux636eux4e0bux8f7d}{%
+\subsection{数据下载}\label{ux6570ux636eux4e0bux8f7d}}
+
+在服务器上创建项目文件夹
+\passthrough{\lstinline!mkdir \~/workplace/homework1!}\hspace{0pt}
+
+通过在 NCBI 的 SRA 数据库输入 SRR id，打开
+\href{https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP188551\&o=acc_s\%3Aa\&s=SRR8734722,SRR8734718,SRR8734708,SRR8734712}{Run
+Selector}，选择 4 个 Run 后勾选 Selected，下载 Metadata 和 Accession
+List，上传到服务器项目文件夹中。
+
+\begin{figure}
+
+{\centering \includegraphics{assets/image-20220923111615-szjl96s.png}
+
+}
+
+\caption{image}
+
+\end{figure}
+
+\hspace{0pt}\passthrough{\lstinline!SRR\_Acc\_List.txt!}
+\hspace{0pt}文件内容
+
+\begin{lstlisting}
+SRR8734722
+SRR8734718
+SRR8734708
+SRR8734712
+\end{lstlisting}
+
+服务器项目文件夹创建
+\passthrough{\lstinline!group.csv!}\hspace{0pt}，记录 SRR ID 和分组信息
+
+\begin{lstlisting}
+SRR8734708,set1_WT_D0
+SRR8734712,set1_NonoKO_D0
+SRR8734718,set2_WT_D0
+SRR8734722,set2_NonoKO_D0
+\end{lstlisting}
+
+然后在服务器上使用 sratoolkit 软件的 fastq-dump
+命令进行下载测序数据。fastq-dump 可以下载 fastq
+格式的文件，也可以将下载好的 sra 格式文件转换为 fastq 格式。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  配置 sratoolkit（v2.11.0）
+
+\begin{lstlisting}[language=bash]
+vdb-config --interactive
+# 然后按s，o，e，完成配置
+\end{lstlisting}
+\item
+  编写 slurm
+  作业脚本：\passthrough{\lstinline!vim \~/scripts/fastq-dump.sh!}
+
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+#SBATCH -J fastq-dump
+#SBATCH -p dna
+#SBATCH -N 1
+#SBATCH --mem=10G
+#SBATCH --cpus-per-task=2
+#SBATCH -o slurm.%j.%x.out        # STDOUT
+#SBATCH -e slurm.%j.%x.err        # STDERR
+#SBATCH --mail-type=END
+#SBATCH --mail-user=jxsu22@m.fudan.edu.cn
+
+fastq-dump --split-3 --gzip $1 --outdir $2
+\end{lstlisting}
+\item
+  运行 shell 脚本
+
+\begin{lstlisting}[language=bash]
+PROJECT=/home/u22211520038/workplace/homework1
+cd $PROJECT
+cat $PROJECT/SRR_Acc_List.txt| while read id;do
+    sbatch ~/scripts/fastq-dump.sh ${id} $PROJECT/01_rawdata/ 
+done
+\end{lstlisting}
+\item
+  下载完成
+
+  \includegraphics{assets/image-20220923232239-tkxtdyv.png}\hspace{0pt}
+
+  \includegraphics{assets/image-20220926232618-otpzdnj.png}\hspace{0pt}
+
+  \hspace{0pt}
+\end{enumerate}
+
+\hypertarget{ux4e8cux5206ux6790ux8fc7ux7a0b}{%
+\section{二、分析过程}\label{ux4e8cux5206ux6790ux8fc7ux7a0b}}
+
+\hypertarget{trim_galore-ux53bbux9664ux4f4eux8d28ux91cfux7684-reads-ux548c-adaptor}{%
+\subsection{1、trim\_galore 去除低质量的 reads 和
+adaptor}\label{trim_galore-ux53bbux9664ux4f4eux8d28ux91cfux7684-reads-ux548c-adaptor}}
+
+\href{https://github.com/FelixKrueger/TrimGalore}{Trim Galore} 使用 Perl
+语言对
+\href{https://www.bioinformatics.babraham.ac.uk/projects/fastqc/}{FastQC}
+和 \href{https://github.com/marcelm/cutadapt}{Cutadapt}
+进行了封装。可以用于过滤低质量碱基和去除序列 3' 末端的
+adapter。可适用于所有高通量测序，包括 RRBS(Reduced Representation
+Bisulfite-Seq ),、Illumina、Nextera 和 smallRNA
+测序平台的双端和单端数据。
+
+\begin{lstlisting}
+$ trim_galore --version
+
+                        Quality-/Adapter-/RRBS-/Speciality-Trimming
+                                [powered by Cutadapt]
+                                  version 0.6.7
+
+                               Last update: 11 05 2020
+\end{lstlisting}
+
+参数
+
+\begin{itemize}
+\tightlist
+\item
+  \passthrough{\lstinline!--fastqc!}：Run FastQC in the default mode on
+  the FastQ file once trimming is complete.
+\item
+  \passthrough{\lstinline!--illumina!}：Adapter sequence to be trimmed
+  is the first 13bp of the Illumina universal adapter AGATCGGAAGAGC
+  instead of the default auto-detection of adapter sequence.
+\item
+  \passthrough{\lstinline!-o/--output\_dir <DIR>!}：If specified all
+  output will be written to this directory instead of the current
+  directory. If the directory doesn't exist it will be created for you.
+\item
+  \passthrough{\lstinline!--gzip!}：Compress the output file with
+  \passthrough{\lstinline!gzip!}. If the input files are gzip-compressed
+  the output files will be automatically gzip compressed as well.
+\end{itemize}
+
+实操过程
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  编写 trim\_galore 的 slurm
+  作业脚本：\passthrough{\lstinline!vim \~/scripts/trim\_galore.sh!}\hspace{0pt}
+
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+#SBATCH -J trim_galore
+#SBATCH -p dna
+#SBATCH -N 1
+#SBATCH --mem=20G
+#SBATCH --cpus-per-task=4
+#SBATCH -o slurm.%j.%x.out        # STDOUT
+#SBATCH -e slurm.%j.%x.err        # STDERR
+#SBATCH --mail-type=END  # 发送哪一种email通知：BEGIN,END,FAIL,ALL
+#SBATCH --mail-user=jxsu22@m.fudan.edu.cn
+
+mode=$1
+SRR=$2
+if [ "$mode" == "single" ];then
+    # 如果是单端
+    trim_galore --illumina --fastqc  $SRR.fastq.gz
+elif [ "$mode" == "paired" ];then
+    # 如果是多端
+    trim_galore --illumina --fastqc --paired ${SRR}_1.fastq.gz ${SRR}_2.fastq.gz
+fi
+\end{lstlisting}
+\item
+  运行 shell 脚本，将 trim\_galore 作业脚本提交到 slurm 系统
+
+\begin{lstlisting}[language=bash]
+PROJECT=/home/u22211520038/workplace/homework1
+mode=paired
+
+cd $PROJECT/01_rawdata/
+cat $PROJECT/SRR_Acc_List.txt| while read SRR;do 
+    sbatch ~/scripts/trim_galore.sh $mode $SRR
+done
+\end{lstlisting}
+\item
+  运行结束：在项目 \passthrough{\lstinline!$PROJECT/01\_rawdata/!}
+  \hspace{0pt}文件夹下，新生成了双端测序的过滤文件，以 SRR8734708
+  测序文件为例：
+
+  \hspace{0pt}\passthrough{\lstinline!SRR8734708\_1.fastq.gz-> SRR8734708\_1\_val\_1.fq.gz!}\hspace{0pt}
+
+  \hspace{0pt}\passthrough{\lstinline!SRR8734708\_2.fastq.gz->SRR8734708\_2\_val\_2.fq.gz!}\hspace{0pt}
+
+  \includegraphics{assets/image-20220927195628-y81zt42.png}\hspace{0pt}
+\end{enumerate}
+
+\begin{quote}
+如果是单端测序模式，trim\_galore 则会默认生成带 trimed.fq.gz 的数据文件
+\end{quote}
+
+\hypertarget{ux4f7fux7528-tophat2-ux6bd4ux5bf9ux548c-cufflinks-ux8ba1ux7b97ux57faux56e0ux8868ux8fbe}{%
+\subsection{2、使用 Tophat2 比对和 Cufflinks
+计算基因表达}\label{ux4f7fux7528-tophat2-ux6bd4ux5bf9ux548c-cufflinks-ux8ba1ux7b97ux57faux56e0ux8868ux8fbe}}
+
+\href{https://ccb.jhu.edu/software/tophat/index.shtml}{Tophat2}
+是一个比对工具，本身实际不能比对，而是通过调用 bowtie/bowtie2
+进行比对。Tophat 最初只能调用 bowtie，2012 年 4 月 9 日 Tophat 发布了
+2.0.0 版本，宣布支持 bowtie2 的比对，将其称之为
+Tophat2。进行比对时，需要输入基因组的索引，而不是直接输入基因组序列，这是为了比对更加快速、减小计算内存，帮助比对软件更快速的找到目标区域。
+
+\href{http://cole-trapnell-lab.github.io/cufflinks/}{Cufflinks}
+是一个主要用于基因表达量的计算和差异表达基因分析的软件包。其下主要包含
+cufflinks，cuffmerge，cuffcompare 和 cuffdiff 等几支主要的程序。
+
+\begin{itemize}
+\tightlist
+\item
+  cufflinks 可以通过 tophat2 生成的 accepted\_hits.bam 文件计算基因的
+  FPKM 值、输出基因组注释 gtf 文件。
+\item
+  cuffdiff 则可以通过 tophat2 生成的 accepted\_hits.bam 文件和基因组注释
+  gtf 文件计算差异表达基因。
+\end{itemize}
+
+实操过程
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  先准备参考基因组
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item
+    参考基因组地址
+
+    \begin{itemize}
+    \tightlist
+    \item
+      基因索引文件文件：\passthrough{\lstinline!/home/public/share/Genomes/mm10\_Bowtie2Index!}\hspace{0pt}
+    \item
+      基因注释文件地址：\passthrough{\lstinline!/home/public/share/Genomes/mm10\_genes.gtf!}\hspace{0pt}
+    \end{itemize}
+  \item
+    将参考基因组软连接到项目文件夹下
+
+\begin{lstlisting}[language=bash]
+PROJECT=/home/u22211520038/workplace/homework1
+cd $PROJECT
+mkdir $PROJECT/00_index
+# 参考基因组
+ln -s /home/public/share/Genomes/mm10_Bowtie2Index $PROJECT/00_index
+# 基因注释
+ln -s /home/public/share/Genomes/mm10_genes.gtf $PROJECT/00_index
+\end{lstlisting}
+  \end{enumerate}
+\item
+  编写运行 tophat2 和 cufflinks
+  的脚本：\passthrough{\lstinline!vim tophat2\_cufflinks.sh!}
+
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+#SBATCH -J tophat2_cufflinks
+#SBATCH -p dna
+#SBATCH -N 4
+#SBATCH --mem=20G
+#SBATCH --cpus-per-task=4
+#SBATCH -o slurm.%j.%x.out        # STDOUT
+#SBATCH -e slurm.%j.%x.err        # STDERR
+#SBATCH --mail-type=END  # 发送哪一种email通知：BEGIN,END,FAIL,ALL
+#SBATCH --mail-user=jxsu22@m.fudan.edu.cn
+
+echo "Usage:"
+echo "   tophat2_cufflinks.sh {mode} {threads} {transcriptome-index} {bowtie2-index} {SRR} {fq1} [{fq2}] "
+echo ""
+
+
+INDEX=$PWD/00_index
+DATA=$PWD/01_rawdata
+RESULT=$PWD/02_result
+
+mode=$1
+if test -z $mode # 检测字符是否为空
+then
+   echo "please input the mode(single or paired)"
+   exit
+fi
+threads=$2
+if test -z $threads
+then
+   echo "please input the number of threads"
+   exit
+fi
+
+Annotation=$3
+if test -z $Annotation
+then
+   echo "please input transcriptome-index(/share/Genomes/Homo_sapiens/UCSC/hg19/Annotation/Genes/hg19_genes/genes.gff)" 
+   exit
+fi
+
+bowtie2Index=$4
+if test -z $bowtie2Index
+then
+   echo "please input bowtie2-index(/share/Genomes/Homo_sapiens/UCSC/hg19/Sequence/Bowtie2Index/genome)" 
+   exit
+fi
+
+SRR=$5
+if test -z $SRR
+then
+   echo "please input SRR id"
+   exit
+fi
+
+fq1=$6
+if test -z $fq1
+then
+   echo "please input fasta1"
+   exit
+fi
+
+
+if [ "$mode" == "paired" ];then
+
+   fq2=$7
+   if test -z $fq2
+   then
+      echo "please input fasta1"
+      exit
+   fi
+fi
+
+#====================================================
+echo "Running info"
+echo "Project:    "$PWD
+echo "Read:       "$SRR
+echo "Annotation: "$Annotation
+echo "Genome:     "$bowtie2Index
+echo " "
+
+########################RUN##############################
+mkdir -p ${RESULT}/tophat2/${SRR}
+mkdir -p ${RESULT}/cufflinks/${SRR}
+
+if [ "$mode" == "single" ];then
+    # 如果是单端
+    tophat2 -p ${threads} -o ${RESULT}/tophat2/${SRR} ${INDEX}/${bowtie2Index} ${DATA}/${fq1}
+elif [ "$mode" == "paired" ];then
+    # 如果是多端
+    tophat2 -p ${threads} -o ${RESULT}/tophat2/${SRR} ${INDEX}/${bowtie2Index} ${DATA}/${fq1} ${DATA}/${fq2}
+fi
+
+cufflinks -p ${threads} -o ${RESULT}/cufflinks/${SRR} -G ${INDEX}/$Annotation ${RESULT}/tophat2/${SRR}/accepted_hits.bam
+
+echo " "
+echo " Running ${SRR} is compeleted."
+echo " "
+\end{lstlisting}
+\item
+  运行 shell 脚本，将该作业脚本提交到 slurm 系统
+
+\begin{lstlisting}[language=bash]
+PROJECT=/home/u22211520038/workplace/homework1
+mode=paired
+cd $PROJECT
+cat $PROJECT/SRR_Acc_List.txt | while read SRR;do
+    sbatch ~/scripts/Tophat_Cufflinks.sh \
+        $mode \
+        4 \
+        mm10_genes.gtf \
+        mm10_Bowtie2Index/genome \
+        ${SRR} \
+        ${SRR}_1_val_1.fq.gz \
+        ${SRR}_2_val_2.fq.gz 
+done
+\end{lstlisting}
+\item
+  运行结束：在项目 \$PROJECT/02\_result/文件夹下，tophat2 和 cufflinks
+  文件夹分别存放两个软件运行的结果。
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item
+    tophat2 的运行结果
+
+    \includegraphics{assets/image-20220928193453-vtzwja0.png}\hspace{0pt}
+
+    其中最有用的是 accepted\_hits.bam，记录了 reads
+    比对到参考基因组的数据
+  \item
+    cufflinks 的运行结果：
+
+    \includegraphics{assets/image-20220928192709-10579bp.png}\hspace{0pt}
+
+    其中常用的是 \passthrough{\lstinline!genes.fpkm\_tracking!} 和
+    \passthrough{\lstinline!transcripts.gtf!} 文件
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \passthrough{\lstinline!genes.fpkm\_tracking!}：isoforms
+      (可以理解为 gene 的各个外显子)的 fpkm 计算结果；
+    \item
+      \passthrough{\lstinline!transcripts.gtf!}：转录组的
+      gtf，该文件包含 Cufflinks 的组装结果 isoforms；
+    \end{itemize}
+  \end{enumerate}
+\end{enumerate}
+
+\hypertarget{fpkm-ux8f6cux5316ux4e3a-tpm}{%
+\subsection{3、FPKM 转化为 TPM}\label{fpkm-ux8f6cux5316ux4e3a-tpm}}
+
+在 RNA-Seq 的分析中，需要对基因或转录本的 read counts
+数目进行标准化（normalization）。因为落在一个基因区域内的 read counts
+数目取决于基因长度和测序深度，一个基因越长，测序深度越高，落在其内部的
+read counts
+数目就会相对越多。在进行基因差异表达的分析时，往往是在多个样本中比较不同基因的表达量，如果不进行数据标准化，比较结果是没有意义的。read
+counts 数目标准化的两个关键因素就是基因长度和测序深度，常常用 RPKM
+(Reads Per Kilobase Million), FPKM (Fragments Per Kilobase Million) 和
+TPM (Transcripts Per Million)作为标准化数值。
+
+RPKM 和 FPKM 的定义是相同的，唯一的区別是 FPKM 用于双端测序文库，而 RPKM
+用于单端测序文库。
+
+FPKM 和 TPM 都能够矫正掉基因长度及测序深度对 gene
+表达定量的影响，区别在于
+
+\begin{itemize}
+\tightlist
+\item
+  FPKM 先计算比对到每个基因的 read 数占 reads
+  总数的比例，再考虑基因的长度；
+\item
+  而 TPM 是先考虑基因的长度，再把 read counts
+  转化为占处理之后的总数的比例。
+\end{itemize}
+
+之所以要将 FPKM 转化为 TPM，是因为 TPM
+可以使得每个样本的表达量\textbf{总和都是1 Million}，使得 TPM
+中的基因表达量可以直接进行样本间的比较。
+
+编写 FPKM2TPM.R 脚本，改进自
+\passthrough{\lstinline!/home/public/software/wfz\_scripts/FPKM2TPM.R!}\hspace{0pt}，主要改进点是把输出文件的
+xls 格式改成了 tsv 文件格式。
+
+\begin{lstlisting}[language=R]
+#!/home/u22211520038/.conda/envs/achuan/bin/Rscript
+# ====================================================================
+suppressPackageStartupMessages(library("optparse"))
+# ====================================================================
+option_list <- list(
+  make_option(c("-f", "--files"),
+    type = "character", default = "genes.fpkm_tracking",
+    help = "To specify fpkm files generated by cufflinks with comma-separate [default %default]"
+  ),
+  make_option(c("-l", "--labels"),
+    type = "character", default = "",
+    help = "To specify labels [default %default]"
+  ),
+  make_option(c("-o", "--output"),
+    type = "character", default = "Expression",
+    help = "To specify output file [default %default]"
+  )
+)
+
+parser <- OptionParser(
+  usage = "%prog [options]", option_list = option_list,
+  description = "\nThe script is to convert FPKMs into TPMs.",
+  epilogue = "Feizhen Wu(wufz@fudan.edu.cn), July 09, 2018.\n"
+)
+arguments <- parse_args(parser, positional_arguments = 0, print_help_and_exit = T)
+opt <- arguments$options
+files <- strsplit(opt$files, ",")[[1]]
+labels <- strsplit(opt$labels, ",")[[1]]
+output <- opt$output
+
+
+library(data.table)
+library(pheatmap)
+FPKM2TPM <- function(myfile, myName = myfile) {
+  if (myName == myfile) {
+    myName <- sub(pattern = "(.*)\\..*$", replacement = "\\1", basename(myfile))
+  }
+  cat("The label of", myfile, " was assigned as ", myName, "!\n")
+  if (file.access(myfile) == -1) {
+    stop(sprintf("Specified file ( %s ) does not exist", myfile))
+  }
+  Exp <- fread(myfile, header = T)[, c("gene_id", "FPKM")]
+  Exp <- Exp[!grep("^Mir", Exp$gene_id), ]
+  Exp <- Exp[!grep("^MIR", Exp$gene_id), ]
+  Exp <- Exp[!duplicated(Exp$gene_id), ]
+  ss <- sum(Exp$FPKM)
+  Exp$Tpm <- Exp$FPKM / ss * 10^6
+  Tpm <- Exp[, c(1, 3)]
+  Fpkm <- Exp[, c(1, 2)]
+  names(Tpm) <- c("gene_id", myName)
+  names(Fpkm) <- c("gene_id", myName)
+  Result <- list()
+  Result$Tpm <- Tpm
+  Result$Fpkm <- Fpkm
+  return(Result)
+}
+
+# ===================================
+if (length(labels) > 0) {
+  Exp1 <- FPKM2TPM(files[1], labels[1])
+} else {
+  Exp1 <- FPKM2TPM(files[1])
+}
+Exp_Tpm <- Exp1$Tpm
+Exp_Fpkm <- Exp1$Fpkm
+i <- 2
+while (i <= length(files)) {
+  if (i <= length(labels)) {
+    Exp1 <- FPKM2TPM(files[i], labels[i])
+  } else {
+    Exp1 <- FPKM2TPM(files[i])
+  }
+  Exp_Fpkm <- merge(Exp_Fpkm, Exp1$Fpkm, by = "gene_id")
+  Exp_Tpm <- merge(Exp_Tpm, Exp1$Tpm, by = "gene_id")
+  i <- i + 1
+}
+
+fwrite(Exp_Tpm, file = paste(output, "_TPM.tsv", sep = ""), quote = F, sep = "\t", row.names = F)
+fwrite(Exp_Fpkm, file = paste(output, "_FPKM", ".tsv", sep = ""), quote = F, sep = "\t", row.names = F)
+
+Exp <- Exp_Tpm[, -1]
+p <- cor(Exp)
+pdf(file = paste(output, "_TPM_correlation.pdf", sep = ""), height = 360 / 100, width = 437 / 100, onefile = F)
+pheatmap(p)
+dev.off()
+write.table(p, file = paste(output, "_TPM_correlation.tsv", sep = ""), quote = F)
+\end{lstlisting}
+
+接下来编写 shell 脚本以批量传入参数运行，将 cufflinks 计算得到的各样本
+FPKM 转化为 TPM。
+
+\begin{lstlisting}[language=bash]
+PROJECT=/home/u22211520038/workplace/homework1
+mkdir -p $PROJECT/02_result/fpkm
+mkdir -p $PROJECT/02_result/FPKM2TPM
+cd $PROJECT/02_result
+
+# 创建软链接，并以分组命名
+cat $PROJECT/group.csv | while IFS="," read -r SRR group;do
+    ln -s $PROJECT/02_result/cufflinks/${SRR}/genes.fpkm_tracking $PROJECT/02_result/fpkm/${group}.fpkm
+done
+
+# 获得fkpm的列表
+cd $PROJECT/02_result/fpkm
+delim=""
+fpkm_list=""
+for item in `ls *.fpkm`; do
+  temp="${delim}${item##*/}"
+  fpkm_list="${fpkm_list}${temp}"
+  delim=","
+done
+
+# 通过Rscript进行FPKM转化TPM的转化
+~/scripts/FPKM2TPM.R  -f $fpkm_list -o $PROJECT/02_result/FPKM2TPM/Expression
+\end{lstlisting}
+
+FPKM2TPM.R 还会调用 pheatmap 包根据各样本的 TPM 表达量来绘制热图
+
+\includegraphics{assets/image-20220924223301-uunvmdm.png}\hspace{0pt}
+
+‍
+
+\hypertarget{ux7528-cuffdiff-ux8ba1ux7b97ux57faux56e0ux5deeux5f02ux8868ux8fbe}{%
+\subsection{4、用 cuffdiff
+计算基因差异表达}\label{ux7528-cuffdiff-ux8ba1ux7b97ux57faux56e0ux5deeux5f02ux8868ux8fbe}}
+
+\begin{lstlisting}
+$ cuffdiff -h
+Usage:   cuffdiff [options] <transcripts.gtf> <sample1_hits.sam> <sample2_hits.sam> [... sampleN_hits.sam]
+   Supply replicate SAMs as comma separated lists for each condition: sample1_rep1.sam,sample1_rep2.sam,...sample1_repM.sam
+\end{lstlisting}
+
+了解 cuffdiff 的输入参数，需要输入 transcripts.gtf 和 sample\_hits.bam
+文件(或 sam 格式的文件）。
+
+使用 cuffdiff 时需要注意
+
+\begin{itemize}
+\tightlist
+\item
+  样本重复和多样本分别以逗号和空格分隔：当一个样本有多个 replicate
+  时，使用逗号隔开。对于多个 sample，用空格隔开，以计算 samples
+  间的基因表达的差异性。
+\item
+  log2(fold\_change)的值是
+  log2(sample2/sample1)，在统计上下调关系时需要注意输入的 sample
+  顺序，一般是 WT sample 在前，实验组 sample 在后。
+\end{itemize}
+
+这一步将使用 cuffdiff 根据 Tophat2 生成的各样本比对文件
+accepted\_hits.bam 以及小鼠的基因组注释文件寻找差异基因。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  先编写 cuffdiff
+  的作业脚本：\passthrough{\lstinline!vim \~/scripts/cuffdiff.sh!}
+
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+#SBATCH -J cuffdiff
+#SBATCH -p dna
+#SBATCH -N 1
+#SBATCH --mem=8G
+#SBATCH --cpus-per-task=2
+#SBATCH -o slurm.%j.%x.out   # STDOUT
+#SBATCH -e slurm.%j.%x.err   # STDERR
+#SBATCH --mail-type=END  # 发送哪一种email通知：BEGIN,END,FAIL,ALL
+#SBATCH --mail-user=jxsu22@m.fudan.edu.cn
+
+outdir=$1
+gtf=$2
+bam_dir=$3
+label1=$4
+label2=$5
+
+sample1=$(ls $bam_dir/*$label1* | xargs | tr ' ' ',')
+sample2=$(ls $bam_dir/*$label2* | xargs | tr ' ' ',')
+cuffdiff -p 2 -o $outdir \
+    -L $label1,$label2 \
+    $gtf \
+    $sample1 \ # Separate different samples with space
+    $sample2
+\end{lstlisting}
+\item
+  然后运行 shell 脚本，提交该任务
+
+\begin{lstlisting}[language=bash]
+PROJECT=/home/u22211520038/workplace/homework1
+mkdir -p $PROJECT/02_result/bam
+mkdir -p $PROJECT/02_result/cuffdiff
+
+
+# 创建软链接，并以分组命名
+cat $PROJECT/group.csv | while IFS="," read -r SRR group;do
+    ln -s $PROJECT/02_result/tophat2/${SRR}/accepted_hits.bam $PROJECT/02_result/bam/${group}.bam
+done
+
+
+cd $PROJECT/02_result/cuffdiff
+
+# 运行cuffdiff，进行差异基因分析
+sbatch ~/scripts/cuffdiff.sh \
+    $PROJECT/02_result/cuffdiff \
+    $PROJECT/00_index/mm10_genes.gtf \
+    $PROJECT/02_result/bam \
+    WT \
+    NonoKO
+
+\end{lstlisting}
+\item
+  查看运行结果
+
+  \passthrough{\lstinline!ll $\{Project\}/02\_result/cuffdiff!}
+
+  \includegraphics{assets/image-20220928231232-lzbzun2.png}\hspace{0pt}
+
+  可以看到生成了很多文件，后面的差异基因分析将主要用到
+  gene\_exp.dff。其中第三列是基因名，第五列和第六列是比较的两个样本名，第
+  10 列是 log2(foldchange)值，第 12 列是 pvalue。
+
+  \includegraphics{assets/Snipaste_2022-10-26_08-41-47-20221026084153-s33gjur.png}\hspace{0pt}
+\end{enumerate}
+
+\hypertarget{ux4e09r-ux8bedux8a00ux4ee3ux7801}{%
+\section{三、R 语言代码}\label{ux4e09r-ux8bedux8a00ux4ee3ux7801}}
+
+准备需要的 R 包
+
+\begin{lstlisting}[language=R]
+if (!require("BiocManager")) install.packages("BiocManager")
+if (!require("pheatmap")) BiocManager::install("pheatmap")
+if (!require("clusterProfiler")) BiocManager::install("clusterProfiler")
+if (!require("org.Mm.eg.db")) BiocManager::install("org.Mm.eg.db")
+if (!require("cowplot")) BiocManager::install("cowplot")
+\end{lstlisting}
+
+设置工作目录
+
+\begin{lstlisting}[language=R]
+setwd('~/workplace/homework1/02_result')
+\end{lstlisting}
+
+从 cuffdiff 生成的 gene\_exp.diff，进行解析，提取 \textbar{}
+log2(foadchange) \textbar\textgreater1.5，p\_value\textless0.05
+的差异基因，保存为
+\passthrough{\lstinline!DiffGenes\_FC1.5.txt!}\hspace{0pt}
+
+\begin{lstlisting}[language=R]
+DEG <- read.table("./cuffdiff/gene_exp.diff", header = T)
+DEG <- DEG[, c(3, 10, 12)]
+DEG <- DEG[is.finite(DEG$log2.fold_change.), ]
+DEG <- DEG[abs(DEG$log2.fold_change.) > log2(1.5) & DEG$p_value < 0.05, ] # 提取log2(foadchange)>1.5，p_value<0.05的差异基因
+names(DEG) <- c("genes", "foldchange", "pvalue")
+DEG$regulation <- "up"
+DEG$regulation[DEG$foldchange < 0] <- "down"
+DEG <- DEG[order(abs(DEG$foldchange), decreasing = T), ] # 按照foldchange绝对值大小进行倒序排序
+write.table(DEG, file = "plot/DiffGenes_FC1.5.txt ", sep = "\t", quote = F, row.names = F)
+\end{lstlisting}
+
+绘制差异基因的图
+
+\begin{lstlisting}[language=R]
+# bar-plot
+{
+  library(ggplot2)
+  tab <- as.data.frame(table(DEG$regulation))
+  tab$Var1 <- factor(tab$Var1, levels = c("up", "down"))
+
+  p <- ggplot(tab, aes(x = Var1, y = Freq, label = Freq, fill = Var1)) +
+    geom_bar(stat = "identity")
+  p <- p + geom_text(position = position_dodge(0.9), vjust = 0, size = 3) + ylim(0, max(tab$Freq) * 1.1)
+  p <- p + theme_classic(8) + xlab("differential expression") + ylab("Number of genes")
+  p <- p + ggtitle("diffgenes") + theme(legend.position = "none")
+  p <- p + theme(plot.title = element_text(hjust = 0.5))
+  p
+  ggsave(p, filename = "plot/diffgene_number_barplot.pdf", width = 2.2, height = 2.2)
+}
+
+# heatmap
+{
+  library(scales)
+  library(pheatmap)
+  dd <- read.table("FPKM2TPM/Expression_TPM.tsv", header = T)
+  # 取Top50的差异基因在各个样本的TPM
+  DEG1 <- DEG[order(abs(DEG$foldchange), decreasing = T), ]
+  num <- 50
+  DEG1 <- DEG1[1:num, ]
+  dd1 <- dd[dd$gene_id %in% DEG1$genes, ]
+  row.names(dd1) <- dd1$gene_id
+  dd1$gene_id <- NULL
+  names(dd1) <- c("set1_NonoKO_D0", "set1_WT_D0", "set2_NonoKO_D0", "set2_WT_D0")
+  dd2 <- t(apply(dd1, 1, rescale))
+  # 绘制热图
+  pdf(file = "plot/top_50gene.pdf", width = 3, height = 7)
+  pheatmap(dd2, cutree_rows = 2, cutree_cols = 2, fontsize_row = 8)
+  dev.off()
+}
+\end{lstlisting}
+
+GO 富集和 KEGG 富集分析代码
+
+\begin{lstlisting}[language=R]
+library(clusterProfiler)
+library(org.Mm.eg.db)
+library(cowplot)
+gene <- bitr(DEG$genes,
+  fromType = "SYMBOL",
+  toType = "ENTREZID",
+  OrgDb = org.Mm.eg.db
+) # 选择小鼠数据库
+
+geneList <- bitr(dd$gene_id,
+  fromType = "SYMBOL",
+  toType = "ENTREZID",
+  OrgDb = org.Mm.eg.db
+) # 选择小鼠数据库
+# 对样本间的差异基因进行GO富集分析
+ego <- enrichGO(
+  gene = gene$ENTREZID,
+  universe = names(geneList$ENTREZID),
+  OrgDb = org.Mm.eg.db, # 选择小鼠数据库
+  ont = "BP",
+  pAdjustMethod = "BH",
+  pvalueCutoff = 0.01,
+  qvalueCutoff = 0.05,
+  readable = TRUE
+)
+# 对样本间的差异基因进行KEGG富集分析
+kk <- enrichKEGG(
+  gene = gene$ENTREZID,
+  organism = "mmu", # 选择小鼠
+  pvalueCutoff = 0.05,
+  pAdjustMethod = "BH",
+  qvalueCutoff = 0.05
+)
+
+p1 <- dotplot(ego, showCategory = 5, orderBy = "x") + ggtitle("dotplot for GOBP")
+p2 <- dotplot(kk, showCategory = 5, orderBy = "x") + ggtitle("dotplot for KEGG")
+pp <- plot_grid(p1, p2, ncol = 1)
+ggsave(p1, filename = "plot/GO_enrichment.pdf")
+ggsave(p2, filename = "plot/KEGG_enrichment.pdf")
+\end{lstlisting}
+
+\hypertarget{ux56dbux5206ux6790ux7ed3ux679c}{%
+\section{四、分析结果}\label{ux56dbux5206ux6790ux7ed3ux679c}}
+
+筛选差异基因，提取 \textbar{} log2(foldchange) \textbar{} \textgreater{}
+1.5，p\_value\textless0.05 的差异基因共 2599 个，上调基因共 947
+个（log2(foldchange)\textgreater=0），下调基因 1652
+个（log2(foldchange)\textless0）
+
+\includegraphics{assets/Snipaste_2022-10-26_09-45-07-20221026094508-gu7vli7.png}\hspace{0pt}
+
+按照 foldchange 的值由高到低进行排序，取 Top50
+的差异基因，绘制热图。发现 set1\_NonoKO\_D0 和 set2\_NonoKO\_D0
+的基因特征比较类似，而 set2\_WT\_D0
+的上调基因含量过于高了，不确定是样本问题。NonoKO 细胞的
+Mid1、Maf、Pcdh18 等众多基因下调，而 Hist1h2ah、Ftl1、Hprt 基因上调。
+
+\includegraphics{assets/Snipaste_2022-10-26_09-44-43-20221026094454-yjonve6.png}\hspace{0pt}
+
+\hspace{0pt}
+
+进行 GO 富集和 KEGG 富集分析
+
+\includegraphics{assets/Snipaste_2022-10-25_23-45-22-20221025234524-qiue995.png}\hspace{0pt}
+
+\includegraphics{assets/Snipaste_2022-10-25_23-45-53-20221025234555-akrjhuo.png}\hspace{0pt}
+
+通过 GO 的 Biological process 富集分析，发现这些差异基因主要在
+epithelial tube morphogenesis、renal system development、mesenchyme
+development、kidney development、mesenchymal cell differentiation 富集
+
+通过 KEGG 富集分析，这些差异基因主要在 Proteoglycans in cancer、Focal
+adhesion、Axon guidance、ECM-receptor interaction、Basal cell carcinoma
+等代谢途径富集
+
+\hypertarget{ux4e94ux5b58ux5728ux7684ux95eeux9898}{%
+\section{五、存在的问题}\label{ux4e94ux5b58ux5728ux7684ux95eeux9898}}
+
+\begin{itemize}
+\item
+  trim\_galore 过滤双端数据的时候，忘记加--paired 参数，发现
+  trim\_galore 过滤双端数据生成的最终文件不是 trimed.fq.gz，而是
+  val\_1.fq.gz 和 val\_2.fq.gz.
+\item
+  一开始不明白 cuffdiff 的 gene\_exp.diff 其中的 foldchange
+  是怎么计算的，四个样本输进去后会有 6
+  个组的比较，也就是说所有样本之间都进行比较了，包括 set1 的 WT 组和
+  set2 的 WT 组。后来经过助教的指导才发现自己没看仔细 cuffdiff
+  的使用规则，同一组的不同重复用逗号分割，不同组间应该用空格分割，说明无论做什么事情还是要仔细，不要一开始就犯错，理解有问题。
+
+  \includegraphics{assets/image-20221003224834-2o60cnv.png}\hspace{0pt}\hspace{0pt}
+\item
+  cuffdiff 的 log（foldchange）是
+  sample2/sample1，log（foldchange）\textgreater0 代表 gene 在 sample2
+  中上调，log（foldchange）\textless0 代表 gene 在 sample2
+  中下调。开始运行 cuffdiff 的时候，没有注意输入顺序，把 KO 放在了 WT
+  前面，造成上下调基因输出相反。
+\item
+  本次实验的样本量太少，set1 和 set2 同一组的 WT
+  小鼠的基因表达量差异也很大，GO 富集和 KEGG
+  富集分析的结果并不能说明什么，需要扩大样本量找到的差异基因才更有说服力。
+\end{itemize}
+
+‍
+
+
+\printbibliography[title=References]
+
+
+\end{document}
